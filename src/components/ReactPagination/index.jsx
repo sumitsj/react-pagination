@@ -64,6 +64,16 @@ class ReactPagination extends PureComponent {
     return this.getEndPageNumber() < startPage ? total : 0;
   };
 
+  renderLeftEllipsis = () => {
+    const showEllipsis = this.getLeftMarginItemEndPageNumber() + 1 < this.getStartPageNumber();
+    return showEllipsis ? <span className="react-pagination__ellipsis">...</span> : null;
+  };
+
+  renderRightEllipsis = () => {
+    const showEllipsis = this.getRightMarginItemStartPageNumber() - 1 > this.getEndPageNumber();
+    return showEllipsis ? <span className="react-pagination__ellipsis">...</span> : null;
+  };
+
   render() {
     const { containerClass, previousItemClass, nextItemClass } = this.props;
     return (
@@ -74,7 +84,9 @@ class ReactPagination extends PureComponent {
         {this.renderPaginationItems(
           this.getLeftMarginItemStartPageNumber(), this.getLeftMarginItemEndPageNumber(),
         )}
+        {this.renderLeftEllipsis()}
         {this.renderPaginationItems(this.getStartPageNumber(), this.getEndPageNumber())}
+        {this.renderRightEllipsis()}
         {this.renderPaginationItems(
           this.getRightMarginItemStartPageNumber(), this.getRightMarginItemEndPageNumber(),
         )}

@@ -37,6 +37,25 @@ describe('ReactPagination', () => {
     it('should render Next pagination items', () => {
       expect(component.find('button.react-pagination__next')).toHaveLength(1);
     });
+
+    it('should render ellipsis pagination items', () => {
+      expect(component.find('span.react-pagination__ellipsis')).toHaveLength(2);
+    });
+
+    it('should render left ellipsis pagination item only if current page is first page', () => {
+      component.setProps({ current: 1 });
+      expect(component.find('span.react-pagination__ellipsis')).toHaveLength(1);
+    });
+
+    it('should render right ellipsis pagination item only if current page is last page', () => {
+      component.setProps({ current: 20 });
+      expect(component.find('span.react-pagination__ellipsis')).toHaveLength(1);
+    });
+
+    it('should not render ellipsis pagination items if total pages are less than display range', () => {
+      component.setProps({ current: 3, total: 5 });
+      expect(component.find('span.react-pagination__ellipsis')).toHaveLength(0);
+    });
   });
 
   describe('Methods', () => {

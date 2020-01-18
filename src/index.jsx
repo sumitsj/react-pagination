@@ -5,6 +5,8 @@ import ReactPagination from './components/ReactPagination';
 
 const HTML = () => (
   <div>
+    <ReactPagination total={5} current={2} />
+    <br />
     <ReactPagination total={20} current={2} />
     <br />
     <ReactPagination total={20} current={5} />
