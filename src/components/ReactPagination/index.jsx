@@ -4,11 +4,18 @@ import './styles.css';
 
 class ReactPagination extends PureComponent {
   renderPaginationItem = (pageNumber) => {
-    const { itemClass, current, currentItemClass } = this.props;
+    const {
+      itemClass, current, currentItemClass, onChange,
+    } = this.props;
     const currentItemClassName = current === pageNumber ? currentItemClass : '';
 
     return (
-      <button key={pageNumber} type="button" className={`${itemClass} ${currentItemClassName}`}>
+      <button
+        key={pageNumber}
+        type="button"
+        onClick={() => onChange(pageNumber)}
+        className={`${itemClass} ${currentItemClassName}`}
+      >
         {pageNumber}
       </button>
     );
@@ -103,6 +110,7 @@ class ReactPagination extends PureComponent {
 
 ReactPagination.propTypes = {
   total: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
   current: PropTypes.number,
   pageRangeDisplayed: PropTypes.number,
   marginPagesDisplayed: PropTypes.number,

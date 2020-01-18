@@ -4,6 +4,7 @@ import ReactPagination from '../src/components/ReactPagination';
 
 describe('ReactPagination', () => {
   let component;
+  const onChnageSpy = jest.fn();
 
   beforeEach(() => {
     component = shallow(<ReactPagination
@@ -11,7 +12,9 @@ describe('ReactPagination', () => {
       current={5}
       marginPagesDisplayed={1}
       pageRangeDisplayed={5}
+      onChange={onChnageSpy}
     />);
+    onChnageSpy.mockReset();
   });
 
   describe('HTML Structure', () => {
@@ -139,6 +142,13 @@ describe('ReactPagination', () => {
         component.setProps({ current: 18 });
         expect(component.instance().getRightMarginItemEndPageNumber()).toEqual(0);
       });
+    });
+  });
+
+  describe('Events', () => {
+    it('should call onChnageSpy onclick of page item', () => {
+      component.find('button.react-pagination__item').at(0).simulate('click');
+      expect(onChnageSpy).toHaveBeenCalledWith(1);
     });
   });
 });
