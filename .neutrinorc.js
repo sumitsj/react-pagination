@@ -1,6 +1,7 @@
 const airbnb = require('@neutrinojs/airbnb');
 const reactComponents = require('@neutrinojs/react-components');
 const jest = require('@neutrinojs/jest');
+const styles = require('@neutrinojs/style-loader');
 
 module.exports = {
   options: {
@@ -10,5 +11,6 @@ module.exports = {
     airbnb(),
     reactComponents(),
     jest(),
+    styles(),
   ],
 };

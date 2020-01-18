@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 class ReactPagination extends PureComponent {
   renderPaginationItem = (pageNumber) => {
@@ -65,13 +66,15 @@ class ReactPagination extends PureComponent {
   };
 
   renderLeftEllipsis = () => {
+    const { ellipsisItemClass } = this.props;
     const showEllipsis = this.getLeftMarginItemEndPageNumber() + 1 < this.getStartPageNumber();
-    return showEllipsis ? <span className="react-pagination__ellipsis">...</span> : null;
+    return showEllipsis ? <span className={ellipsisItemClass}>...</span> : null;
   };
 
   renderRightEllipsis = () => {
+    const { ellipsisItemClass } = this.props;
     const showEllipsis = this.getRightMarginItemStartPageNumber() - 1 > this.getEndPageNumber();
-    return showEllipsis ? <span className="react-pagination__ellipsis">...</span> : null;
+    return showEllipsis ? <span className={ellipsisItemClass}>...</span> : null;
   };
 
   render() {
@@ -79,7 +82,7 @@ class ReactPagination extends PureComponent {
     return (
       <div className={containerClass}>
         <button type="button" className={previousItemClass} disabled>
-          Previous
+          Prev
         </button>
         {this.renderPaginationItems(
           this.getLeftMarginItemStartPageNumber(), this.getLeftMarginItemEndPageNumber(),
@@ -108,6 +111,7 @@ ReactPagination.propTypes = {
   previousItemClass: PropTypes.string,
   nextItemClass: PropTypes.string,
   currentItemClass: PropTypes.string,
+  ellipsisItemClass: PropTypes.string,
 };
 
 ReactPagination.defaultProps = {
@@ -119,6 +123,7 @@ ReactPagination.defaultProps = {
   previousItemClass: 'react-pagination__previous',
   nextItemClass: 'react-pagination__next',
   currentItemClass: 'react-pagination__current',
+  ellipsisItemClass: 'react-pagination__ellipsis',
 };
 
 export default ReactPagination;

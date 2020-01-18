@@ -7,15 +7,21 @@ const HTML = () => (
   <div>
     <ReactPagination total={5} current={2} />
     <br />
+    <br />
     <ReactPagination total={20} current={2} />
+    <br />
     <br />
     <ReactPagination total={20} current={5} />
     <br />
+    <br />
     <ReactPagination total={20} current={4} />
+    <br />
     <br />
     <ReactPagination total={20} current={12} marginPagesDisplayed={2} />
     <br />
+    <br />
     <ReactPagination total={20} current={18} />
+    <br />
     <br />
   </div>
 );

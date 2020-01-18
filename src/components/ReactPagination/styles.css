@@ -1,0 +1,36 @@
+.react-pagination__container {
+  display: inline-block; 
+  color: rgba(0, 0, 0, 0.65); 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.react-pagination__item,
+.react-pagination__previous,
+.react-pagination__next {
+    min-width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+
+    line-height: 30px;
+    text-align: center;
+
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.react-pagination__item:hover,
+.react-pagination__current {
+    color: #1890ff;
+    border-color: #1890ff;
+    font-weight: 600;
+}
+
+.react-pagination__ellipsis {
+    width: 32px;
+    margin-right: 8px;
+}
