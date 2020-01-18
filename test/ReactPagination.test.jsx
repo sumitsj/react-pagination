@@ -35,10 +35,24 @@ describe('ReactPagination', () => {
 
     it('should render Previous pagination items', () => {
       expect(component.find('button.react-pagination__previous')).toHaveLength(1);
+      expect(component.find('button.react-pagination__previous').props().disabled).toEqual(false);
+    });
+
+    it('should render diabled Previous pagination items if current page is first page', () => {
+      component.setProps({ current: 1 });
+      expect(component.find('button.react-pagination__previous')).toHaveLength(1);
+      expect(component.find('button.react-pagination__previous').props().disabled).toEqual(true);
     });
 
     it('should render Next pagination items', () => {
       expect(component.find('button.react-pagination__next')).toHaveLength(1);
+      expect(component.find('button.react-pagination__next').props().disabled).toEqual(false);
+    });
+
+    it('should render disabled Next pagination items if current page is last page', () => {
+      component.setProps({ current: 20 });
+      expect(component.find('button.react-pagination__next')).toHaveLength(1);
+      expect(component.find('button.react-pagination__next').props().disabled).toEqual(true);
     });
 
     it('should render ellipsis pagination items', () => {
@@ -149,6 +163,18 @@ describe('ReactPagination', () => {
     it('should call onChnageSpy onclick of page item', () => {
       component.find('button.react-pagination__item').at(0).simulate('click');
       expect(onChnageSpy).toHaveBeenCalledWith(1);
+    });
+
+    it('should call onChnageSpy onclick of Next pagination items', () => {
+      component.setProps({ current: 5 });
+      component.find('button.react-pagination__next').simulate('click');
+      expect(onChnageSpy).toHaveBeenCalledWith(6);
+    });
+
+    it('should call onChnageSpy onclick of Previous pagination items', () => {
+      component.setProps({ current: 5 });
+      component.find('button.react-pagination__previous').simulate('click');
+      expect(onChnageSpy).toHaveBeenCalledWith(4);
     });
   });
 });

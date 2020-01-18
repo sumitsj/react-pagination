@@ -84,13 +84,41 @@ class ReactPagination extends PureComponent {
     return showEllipsis ? <span className={ellipsisItemClass}>...</span> : null;
   };
 
+  renderPreviousPaginationItem = () => {
+    const { current, onChange, previousItemClass } = this.props;
+    return (
+      <button
+        type="button"
+        onClick={() => onChange(current - 1)}
+        className={previousItemClass}
+        disabled={current === 1}
+      >
+      Prev
+      </button>
+    );
+  };
+
+  renderNextPaginationItem = () => {
+    const {
+      current, total, onChange, nextItemClass,
+    } = this.props;
+    return (
+      <button
+        type="button"
+        onClick={() => onChange(current + 1)}
+        className={nextItemClass}
+        disabled={current === total}
+      >
+      Next
+      </button>
+    );
+  };
+
   render() {
-    const { containerClass, previousItemClass, nextItemClass } = this.props;
+    const { containerClass } = this.props;
     return (
       <div className={containerClass}>
-        <button type="button" className={previousItemClass} disabled>
-          Prev
-        </button>
+        {this.renderPreviousPaginationItem()}
         {this.renderPaginationItems(
           this.getLeftMarginItemStartPageNumber(), this.getLeftMarginItemEndPageNumber(),
         )}
@@ -100,9 +128,7 @@ class ReactPagination extends PureComponent {
         {this.renderPaginationItems(
           this.getRightMarginItemStartPageNumber(), this.getRightMarginItemEndPageNumber(),
         )}
-        <button type="button" className={nextItemClass} disabled>
-          Next
-        </button>
+        {this.renderNextPaginationItem()}
       </div>
     );
   }

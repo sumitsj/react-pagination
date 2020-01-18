@@ -20,7 +20,7 @@ const WorkingExample = () => {
 };
 
 const StaticSamples = () => {
-  const propsArray = [{ current: 2, total: 5 }, { current: 2, total: 10 },
+  const propsArray = [{ current: 1, total: 5 }, { current: 2, total: 10 },
     { current: 8, total: 10 }, { current: 5, total: 20 },
     { current: 12, total: 20, marginPagesDisplayed: 2 }];
   return (

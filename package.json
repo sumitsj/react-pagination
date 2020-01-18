@@ -7,7 +7,8 @@
     "test": "jest --coverage",
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test"
+    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test",
+    "lint:fix": "eslint --fix --ext mjs,jsx,js src test"
   },
   "keywords": [],
   "author": "Sumit Jadhav",
