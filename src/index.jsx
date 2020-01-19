@@ -4,16 +4,38 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
 import ReactPagination from './components/ReactPagination';
+import './styles.css';
 
-const WorkingExample = () => {
+const WorkingExampleWithDefaultConfiguration = () => {
   const [selectedPageNumber, setSelectedPageNumber] = useState(5);
   return (
     <div>
-      <h3 style={{ fontFamily: 'Verdana' }}>Working Example</h3>
+      <pre>Default Style - </pre>
       <ReactPagination
         total={20}
         current={selectedPageNumber}
         onChange={(pageNumber) => setSelectedPageNumber(pageNumber)}
+      />
+    </div>
+  );
+};
+
+const WorkingExampleWithCustomConfiguration = () => {
+  const [selectedPageNumber, setSelectedPageNumber] = useState(5);
+  return (
+    <div>
+      <pre>Custom Style - </pre>
+      <ReactPagination
+        total={20}
+        current={selectedPageNumber}
+        onChange={(pageNumber) => setSelectedPageNumber(pageNumber)}
+        nextItemText="»"
+        previousItemText="«"
+        itemClass="my-pagination__item"
+        previousItemClass="my-pagination__previous"
+        nextItemClass="my-pagination__next"
+        currentItemClass="my-pagination__current"
+        ellipsisItemClass="my-pagination__ellipsis"
       />
     </div>
   );
@@ -48,7 +70,10 @@ const StaticSamples = () => {
 
 const Main = () => (
   <div>
-    <WorkingExample />
+    <h3 style={{ fontFamily: 'Verdana' }}>Working Examples</h3>
+    <WorkingExampleWithDefaultConfiguration />
+    <br />
+    <WorkingExampleWithCustomConfiguration />
     <hr />
     <StaticSamples />
   </div>
