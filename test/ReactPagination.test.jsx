@@ -36,6 +36,7 @@ describe('ReactPagination', () => {
     it('should render Previous pagination items', () => {
       expect(component.find('button.react-pagination__previous')).toHaveLength(1);
       expect(component.find('button.react-pagination__previous').props().disabled).toEqual(false);
+      expect(component.find('button.react-pagination__previous').props().children).toEqual('prev');
     });
 
     it('should render diabled Previous pagination items if current page is first page', () => {
@@ -47,6 +48,7 @@ describe('ReactPagination', () => {
     it('should render Next pagination items', () => {
       expect(component.find('button.react-pagination__next')).toHaveLength(1);
       expect(component.find('button.react-pagination__next').props().disabled).toEqual(false);
+      expect(component.find('button.react-pagination__next').props().children).toEqual('next');
     });
 
     it('should render disabled Next pagination items if current page is last page', () => {

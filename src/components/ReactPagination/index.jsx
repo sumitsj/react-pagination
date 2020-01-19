@@ -85,7 +85,9 @@ class ReactPagination extends PureComponent {
   };
 
   renderPreviousPaginationItem = () => {
-    const { current, onChange, previousItemClass } = this.props;
+    const {
+      current, onChange, previousItemClass, previousItemText,
+    } = this.props;
     return (
       <button
         type="button"
@@ -93,14 +95,14 @@ class ReactPagination extends PureComponent {
         className={previousItemClass}
         disabled={current === 1}
       >
-      Prev
+        {previousItemText}
       </button>
     );
   };
 
   renderNextPaginationItem = () => {
     const {
-      current, total, onChange, nextItemClass,
+      current, total, onChange, nextItemClass, nextItemText,
     } = this.props;
     return (
       <button
@@ -109,7 +111,7 @@ class ReactPagination extends PureComponent {
         className={nextItemClass}
         disabled={current === total}
       >
-      Next
+        {nextItemText}
       </button>
     );
   };
@@ -141,6 +143,8 @@ ReactPagination.propTypes = {
   pageRangeDisplayed: PropTypes.number,
   marginPagesDisplayed: PropTypes.number,
   containerClass: PropTypes.string,
+  nextItemText: PropTypes.string,
+  previousItemText: PropTypes.string,
   itemClass: PropTypes.string,
   previousItemClass: PropTypes.string,
   nextItemClass: PropTypes.string,
@@ -152,6 +156,8 @@ ReactPagination.defaultProps = {
   current: 1,
   pageRangeDisplayed: 5,
   marginPagesDisplayed: 1,
+  nextItemText: 'next',
+  previousItemText: 'prev',
   containerClass: 'react-pagination__container',
   itemClass: 'react-pagination__item',
   previousItemClass: 'react-pagination__previous',
