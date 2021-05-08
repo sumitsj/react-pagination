@@ -25,7 +25,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.8.0",
-    "handlebars": "~4.5.3",
+    "handlebars": "~4.7.7",
     "jest": "^24.9.0",
     "neutrino": "^9.0.0",
     "prop-types": "^15.7.2",
